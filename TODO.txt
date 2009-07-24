@@ -1,2 +1,0 @@
-- refactor JsonHtml tests
-- add context property to TestRunner test model

@@ -1,8 +1,7 @@
 $.CouchApp(function(app) {
   app.docForm("form", {
-    fields: ["name"],
+    fields: ["title"],
     beforeSave: function(doc) {
-      console.log(doc);
       doc._id = doc.name;
     },
     success: function(doc) {

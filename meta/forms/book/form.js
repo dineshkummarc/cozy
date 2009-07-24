@@ -1,5 +1,5 @@
 meta.form = {
-  titlu: {
+  title: {
     type: "textbox",
     label: "The title",
     validation: {
@@ -14,4 +14,4 @@ meta.form = {
       }
     }
   }
-}
+};

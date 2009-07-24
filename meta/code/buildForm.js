@@ -12,13 +12,11 @@ meta.buildForm = function(metaForm) {
       }
     };
 
-    var input = {
-      input: null,
-      attributes: {
+    var input = {input: null, attributes: {
         type: metaField.type,
+        name: name,
         id: name
-      }
-    };
+      }};
 
     if (metaField.beforeLabel) {
       formFields.push(input, label);
@@ -41,13 +39,9 @@ meta.buildForm = function(metaForm) {
 };
 
 meta.applyFieldDefaults = function(field) {
-  var fieldDefaults = meta.fieldDefaults[field.type] || {};
+  var defaults = meta.fieldDefaults[field.type] || {};
 
-  for (var property in fieldDefaults) {
-    if (!field[property]) {
-      field[property] = meta.fieldDefaults[property];
-    }
-  }
+  Utilities.apply(field, defaults);
 };
 
 meta.fieldDefaults = {

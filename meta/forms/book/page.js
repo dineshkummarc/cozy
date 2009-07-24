@@ -6,6 +6,6 @@ meta.html = [
     {p: "This is a simplistic working form for document creation."},
     meta.buildForm(meta.form),
     meta.libraries,
-    meta.includeScript("form")
+    meta.includeScript("book")
   ]}
 ];

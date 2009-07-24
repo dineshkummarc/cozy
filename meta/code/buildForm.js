@@ -27,19 +27,17 @@ meta.buildForm = function(metaForm) {
     }
   }
 
-  return {
-    form: [
-      {div: [
-        formFields,
-        {button: "Yes!", attributes: {
-          type: "submit"
-        }}
-      ]}
-    ], attributes: {
-      action: "",
-      method: "post"
-    }
-  };
+  return {form: [
+    {div: [
+      formFields,
+      {button: "Yes!", attributes: {
+        type: "submit"
+      }}
+    ]}
+  ], attributes: {
+    action: "",
+    method: "post"
+  }};
 };
 
 meta.applyFieldDefaults = function(field) {

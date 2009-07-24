@@ -1,5 +1,2 @@
-- rename meta/form to meta/book
-- review meta/form/model.js and meta/lib/form.js
--- validation?
-- get code out of the meta/
-- write tests, TDD
+- refactor JsonHtml
+- think of more stories for TestRunner

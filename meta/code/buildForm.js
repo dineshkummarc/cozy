@@ -1,96 +1,98 @@
 meta.buildForm = function(metaForm) {
   var formFields = [];
 
-  for (var name in metaForm) {
-    metaField = metaForm[name];
-    meta.applyFieldDefaults(metaField);
+  for (var fieldName in metaForm) {
+    var metaField = metaForm[fieldName];
 
-    var label = {
-      label: (metaField.label || name) + (metaField.beforeLabel ? "" : ":"),
+    var labelText = (metaField.label || fieldName)
+        + (metaField.beforeLabel ? "" : ":");
+
+    var label = {label: labelText,
       attributes: {
-        for: name
-      }
-    };
-
-    var input = {input: null, attributes: {
-        type: metaField.type,
-        name: name,
-        id: name
+        for: fieldName
       }};
+
+    var input = meta.fieldDefinition[metaField.type];
+
+    Utilities.apply(input.attributes, {
+      id: fieldName,
+      name: fieldName
+    });
 
     if (metaField.beforeLabel) {
       formFields.push(input, label);
     } else {
       formFields.push(label, input);
     }
+
+    formFields.push(meta.fieldDefinition.submit);
   }
 
   return {form: [
-    {div: [
-      formFields,
-      {button: "Yes!", attributes: {
-        type: "submit"
-      }}
-    ]}
+    {div: formFields}
   ], attributes: {
     action: "",
     method: "post"
   }};
 };
 
-meta.applyFieldDefaults = function(field) {
-  var defaults = meta.fieldDefaults[field.type] || {};
 
-  Utilities.apply(field, defaults);
-};
-
-meta.fieldDefaults = {
-  type: "text",
-  beforeLabel: false
-};
-
-meta.fieldDefaults = {
+meta.fieldDefinition = {
   textbox: {
-    _attributes: {
+    input: null,
+    attributes: {
       type: "text"
     }
   },
   password: {
-    hasConfirmation: false,
-    _attributes: {
+    input: null,
+    attributes: {
       type: "password"
-    }
+    },
+    _needsConfirmation: false
   },
   textarea: {
     textarea: ""
   },
   select: {
-    select: "" /* how to define options? */,
+    select: "",
     options: "view_name"
   },
   multiselect: {
-    select: "" /* how to define options? */,
-    options: {
+    select: "",
+    attributes: {
+      multiple: "multiple"
+    },
+    _options: {
       "1": "First option",
       "2": "Second option",
       "3": "Third option"
-    },
-    _attributes: {
-      multiple: "multiple"
     }
   },
   checkbox: {
     input: null,
-    _attributes: {
+    attributes: {
       type: "checkbox",
       checked: false
     }
   },
   radiobox: {
     input: null,
-    options: "the same as for selects",
-    _attributes: {
+    attributes: {
       type: "radio"
+    },
+    _options: "the same as for selects",
+  },
+  submit: {
+    button: "submit",
+    attributes: {
+      type: "submit"
+    }
+  },
+  button: {
+    button: "button",
+    attributes: {
+      type: "button"
     }
   }
 };

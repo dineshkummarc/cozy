@@ -1,7 +1,7 @@
 meta.form = {
   title: {
     type: "textbox",
-    label: "The title",
+    label: "The titlu",
     validation: {
       rules: {
         required: true,

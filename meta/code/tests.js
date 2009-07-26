@@ -2,6 +2,7 @@
 
 load("lib/test_runner/TestRunner.js");
 load("lib/json_html/JsonHtml.js");
+load("vendor/json2.js");
 load("meta/code/buildForm.js");
 
 print("Testing meta.buildForm():");
@@ -13,13 +14,40 @@ print("Testing meta.buildForm():");
 
 TestRunner.testDefaults = {
   context: meta,
-  method: meta.buildForm
+  method: function(metaForm) {
+    return JSON.stringify(meta.buildForm(metaForm));
+  },
+  expected: true
 };
 
 var tests = [{
-  description: "",
-  arguments: [],
-  expected: null
+  description: "Form with a single labeled text-box.",
+  arguments: [{
+    title: {
+      type: "textbox",
+      label: "The title"
+    }
+  }],
+  expected: JSON.stringify({
+    form: [
+      {div: [
+        {label: "The title:", attributes: {
+          for: "title"
+        }},
+        {input: null, attributes: {
+          type: "text",
+          id: "title",
+          name: "title"
+        }},
+        {button: "submit", attributes: {
+          type: "submit"
+        }}
+      ]}
+    ], attributes: {
+      action: "",
+      method: "post"
+    }
+  })
 }];
 
 

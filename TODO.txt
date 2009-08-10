@@ -1,1 +1,4 @@
 - write more stories for meta.buildForm() meta/code/tests.js
+- think of how to DRYly include all the fields in POST when submitting the form
+  from the page-specific script
+- maybe define the _id definition rule in form.js?

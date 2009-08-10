@@ -19,13 +19,8 @@ meta.buildForm = function(metaForm) {
       name: fieldName
     });
 
-    if (metaField.beforeLabel) {
-      formFields.push(input, label);
-    } else {
-      formFields.push(label, input);
-    }
-
-    formFields.push(meta.fieldDefinition.submit);
+    meta.buildFieldOptions(metaField);
+    formFields.push(label, input, meta.fieldDefinition.submit);
   }
 
   return {form: [
@@ -34,6 +29,20 @@ meta.buildForm = function(metaForm) {
     action: "",
     method: "post"
   }};
+};
+
+
+meta.buildFieldOptions = function(metaField) {
+  if (metaField.options && typeof metaField.options != 'string') {
+    var options = [];
+
+    for (var value in metaField.options) {
+      options.push({
+        option: metaField.options[value],
+        attributes: {value: value}
+      });
+    }
+  }
 };
 
 
@@ -48,22 +57,23 @@ meta.fieldDefinition = {
     input: null,
     attributes: {
       type: "password"
-    },
-    _needsConfirmation: false
+    }
   },
   textarea: {
-    textarea: ""
+    textarea: "",
+    attributes: {}
   },
   select: {
     select: "",
-    options: "view_name"
+    options: "view_name",
+    attributes: {}
   },
   multiselect: {
     select: "",
     attributes: {
       multiple: "multiple"
     },
-    _options: {
+    options: {
       "1": "First option",
       "2": "Second option",
       "3": "Third option"
@@ -81,7 +91,7 @@ meta.fieldDefinition = {
     attributes: {
       type: "radio"
     },
-    _options: "the same as for selects",
+    options: "the same as for selects",
   },
   submit: {
     button: "submit",

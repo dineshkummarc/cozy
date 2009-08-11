@@ -25,6 +25,7 @@ TestRunner.testDefaults = {
 var tests = [];
 
 load(
+  'meta/code/tests/get_json_element_tag_name.js',
   'meta/code/tests/form_with_a_single_labeled_textbox.js',
   'meta/code/tests/form_with_a_single_labeled_select_with_inline_options.js'
 );

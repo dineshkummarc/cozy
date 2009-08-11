@@ -9,7 +9,7 @@ tests.push({
   expected: JSON.stringify({
     form: [
       {div: [
-        {label: "The title:", attributes: {
+        {label: "The title", attributes: {
           for: "title"
         }},
         {input: null, attributes: {

@@ -3,23 +3,22 @@ meta.buildForm = function(metaForm) {
 
   for (var fieldName in metaForm) {
     var metaField = metaForm[fieldName];
-
-    var labelText = (metaField.label || fieldName)
-        + (metaField.beforeLabel ? "" : ":");
-
-    var label = {label: labelText,
-      attributes: {
-        for: fieldName
-      }};
-
+    var label = {
+          label: metaField.label || fieldName,
+          attributes: {
+            for: fieldName
+          }
+        }; 
     var input = meta.fieldDefinition[metaField.type];
+    var tagName = meta.getTagName(input);
+
+    input[tagName] = meta.buildFieldOptions(metaField) || input[tagName];
 
     Utilities.apply(input.attributes, {
       id: fieldName,
       name: fieldName
     });
 
-    meta.buildFieldOptions(metaField);
     formFields.push(label, input, meta.fieldDefinition.submit);
   }
 
@@ -32,9 +31,20 @@ meta.buildForm = function(metaForm) {
 };
 
 
+meta.getTagName = function(jsonNode) {
+  for (var property in jsonNode) {
+    if (property != "attributes") return property;
+  }
+
+  throw "jsonNode should have a tag name";
+}
+
+
 meta.buildFieldOptions = function(metaField) {
+  var options;
+
   if (metaField.options && typeof metaField.options != 'string') {
-    var options = [];
+    options = [];
 
     for (var value in metaField.options) {
       options.push({
@@ -43,6 +53,8 @@ meta.buildFieldOptions = function(metaField) {
       });
     }
   }
+
+  return options;
 };
 
 
@@ -65,18 +77,12 @@ meta.fieldDefinition = {
   },
   select: {
     select: "",
-    options: "view_name",
     attributes: {}
   },
   multiselect: {
     select: "",
     attributes: {
       multiple: "multiple"
-    },
-    options: {
-      "1": "First option",
-      "2": "Second option",
-      "3": "Third option"
     }
   },
   checkbox: {
@@ -90,8 +96,7 @@ meta.fieldDefinition = {
     input: null,
     attributes: {
       type: "radio"
-    },
-    options: "the same as for selects",
+    }
   },
   submit: {
     button: "submit",

@@ -14,16 +14,16 @@ tests.push({
   expected: JSON.stringify({
     form: [
       {div: [
-        {label: "The item type:", attributes: {
+        {label: "The item type", attributes: {
           for: "type"
         }},
         {select: [
-          {option: "red", attributes: {value: 1}},
-          {option: "green", attributes: {value: 2}},
-          {option: "blue", attributes: {value: 3}}
+          {option: "red", attributes: {value: "1"}},
+          {option: "green", attributes: {value: "2"}},
+          {option: "blue", attributes: {value: "3"}}
         ], attributes: {
-          id: "title",
-          name: "title"
+          id: "type",
+          name: "type"
         }},
         {button: "submit", attributes: {
           type: "submit"

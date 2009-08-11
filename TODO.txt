@@ -1,5 +1,4 @@
-- write more stories for meta.buildForm() meta/code/tests.js
-- write tests for meta.getName()
+- test meta.buildForm() with radios
 
 hints:
 - think of how to DRYly include all the fields in POST when submitting the form

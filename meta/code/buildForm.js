@@ -41,10 +41,8 @@ meta.getTagName = function(jsonNode) {
 
 
 meta.buildFieldOptions = function(metaField) {
-  var options;
-
   if (metaField.options && typeof metaField.options != 'string') {
-    options = [];
+    var options = [];
 
     for (var value in metaField.options) {
       options.push({
@@ -52,9 +50,9 @@ meta.buildFieldOptions = function(metaField) {
         attributes: {value: value}
       });
     }
-  }
 
-  return options;
+    return options;
+  }
 };
 
 

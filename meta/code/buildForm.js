@@ -71,8 +71,13 @@ meta.buildFieldOptions = function(metaField, fieldName) {
           attributes: {value: value}
         };
 
-        if (metaField.default && metaField.default == value) {
-          option.attributes.selected = "selected";
+        if (metaField.default) {
+          var isArray = metaField.default.constructor == [].constructor;
+          var defaults = isArray ? metaField.default : [metaField.default];
+
+          if (defaults.indexOf(value) > -1) {
+            option.attributes.selected = "selected";
+          }
         }
       }
 

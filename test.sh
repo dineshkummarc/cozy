@@ -1,3 +1,16 @@
 #!/bin/sh
 
-/usr/bin/find . -type f \( -name tests.sh -or -name tests.js \) -exec {} \;
+find . \
+    -type f \
+    -name tests.sh \
+    -exec {} \;
+
+find . \
+    -type f \
+    -name tests.js \
+    -exec {} \;
+
+find . \
+    -type f \
+    -path "./tests/*" \
+    -exec {} \;

@@ -23,12 +23,13 @@ TestRunner.testDefaults = {
 };
 
 var tests = [];
+var dir = 'meta/code/tests/';
 
 load(
-  'meta/code/tests/get_json_element_tag_name.js',
-  'meta/code/tests/form_with_a_single_labeled_textbox.js',
-  'meta/code/tests/form_with_a_single_labeled_multiselect_with_inline_options.js',
-  'meta/code/tests/form_with_labeled_radios.js'
+  dir + 'get_json_element_tag_name.js',
+  dir + 'form_with_a_single_labeled_textbox.js',
+  dir + 'form_with_a_single_labeled_multiselect_with_inline_options.js',
+  dir + 'form_with_labeled_radios.js'
 );
 
 

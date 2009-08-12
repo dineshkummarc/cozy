@@ -3,21 +3,24 @@ meta.buildForm = function(metaForm) {
 
   for (var fieldName in metaForm) {
     var metaField = metaForm[fieldName];
-    var label = {
-          label: metaField.label || fieldName,
-          attributes: {
-            for: fieldName
-          }
-        }; 
-    var input = meta.fieldDefinition[metaField.type];
+    var label = {label: metaField.label || fieldName}; 
+
+    if (metaField.type != "radiobox") label.attributes = {for: fieldName};
+
+    var input = meta.fieldDefinition[metaField.type]
+
+    if (typeof input == "undefined") throw "Unknown meta field type: " + metaField.type;
+
     var tagName = meta.getTagName(input);
 
-    input[tagName] = meta.buildFieldOptions(metaField) || input[tagName];
+    input[tagName] = meta.buildFieldOptions(metaField, fieldName) || input[tagName];
 
-    Utilities.apply(input.attributes, {
-      id: fieldName,
-      name: fieldName
-    });
+    if (input.attributes) {
+      Utilities.apply(input.attributes, {
+        id: fieldName,
+        name: fieldName
+      });
+    }
 
     formFields.push(label, input, meta.fieldDefinition.submit);
   }
@@ -36,19 +39,33 @@ meta.getTagName = function(jsonNode) {
     if (property != "attributes") return property;
   }
 
-  throw "jsonNode should have a tag name";
+  throw "jsonNode " + JSON.stringify(jsonNode) + " should have a tag name";
 }
 
 
-meta.buildFieldOptions = function(metaField) {
+meta.buildFieldOptions = function(metaField, fieldName) {
   if (metaField.options && typeof metaField.options != 'string') {
     var options = [];
 
     for (var value in metaField.options) {
-      options.push({
-        option: metaField.options[value],
-        attributes: {value: value}
-      });
+      if (metaField.type == "radiobox") {
+        options.push({
+          li: [
+            {input: null, attributes: {
+              type: "radio",
+              id: fieldName + "_" + value,
+              name: fieldName,
+              value: value
+            }},
+            {label: metaField.options[value], attributes: {for: fieldName + "_" + value}}
+          ]
+        });
+      } else {
+        options.push({
+          option: metaField.options[value],
+          attributes: {value: value}
+        });
+      }
     }
 
     return options;
@@ -91,10 +108,7 @@ meta.fieldDefinition = {
     }
   },
   radiobox: {
-    input: null,
-    attributes: {
-      type: "radio"
-    }
+    ul: ""
   },
   submit: {
     button: "submit",

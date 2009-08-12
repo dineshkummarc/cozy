@@ -3,7 +3,8 @@ tests.push({
   arguments: [{
     title: {
       type: "textbox",
-      label: "The title"
+      label: "The title",
+      default: "test"
     }
   }],
   expected: JSON.stringify({
@@ -15,7 +16,8 @@ tests.push({
         {input: null, attributes: {
           type: "text",
           id: "title",
-          name: "title"
+          name: "title",
+          value: "test"
         }},
         {button: "submit", attributes: {
           type: "submit"

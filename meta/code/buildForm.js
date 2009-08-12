@@ -9,8 +9,6 @@ meta.buildForm = function(metaForm) {
 
     if (typeof input == "undefined") throw "Unknown meta field type: " + metaField.type;
 
-    input[tagName] = meta.buildFieldOptions(metaField, fieldName) || input[tagName];
-
     if (metaField.type == "radiobox") {
       input.attributes = {id: fieldName + "_radioboxes"};
     } else {
@@ -19,6 +17,14 @@ meta.buildForm = function(metaForm) {
         id: fieldName,
         name: fieldName
       });
+    }
+
+    var options = meta.buildFieldOptions(metaField, fieldName);
+
+    if (options) {
+      input[tagName] = options;
+    } else {
+      if (metaField.default) input.attributes.value = metaField.default;
     }
 
     formFields.push(label, input, meta.fieldDefinition.submit);

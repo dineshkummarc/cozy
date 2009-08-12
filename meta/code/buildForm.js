@@ -72,7 +72,7 @@ meta.buildFieldOptions = function(metaField, fieldName) {
         };
 
         if (metaField.default && metaField.default == value) {
-          option.li[0].attributes.selected = "selected";
+          option.attributes.selected = "selected";
         }
       }
 

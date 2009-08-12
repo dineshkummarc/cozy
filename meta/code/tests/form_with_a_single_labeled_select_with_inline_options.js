@@ -8,7 +8,8 @@ tests.push({
         "1": "red",
         "2": "green",
         "3": "blue"
-      }
+      },
+      default: "2"
     }
   }],
   expected: JSON.stringify({
@@ -19,7 +20,7 @@ tests.push({
         }},
         {select: [
           {option: "red", attributes: {value: "1"}},
-          {option: "green", attributes: {value: "2"}},
+          {option: "green", attributes: {value: "2", selected: "selected"}},
           {option: "blue", attributes: {value: "3"}}
         ], attributes: {
           id: "type",

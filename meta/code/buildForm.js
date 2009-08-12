@@ -4,18 +4,17 @@ meta.buildForm = function(metaForm) {
   for (var fieldName in metaForm) {
     var metaField = metaForm[fieldName];
     var label = {label: metaField.label || fieldName}; 
-
-    if (metaField.type != "radiobox") label.attributes = {for: fieldName};
-
     var input = meta.fieldDefinition[metaField.type]
+    var tagName = meta.getTagName(input);
 
     if (typeof input == "undefined") throw "Unknown meta field type: " + metaField.type;
 
-    var tagName = meta.getTagName(input);
-
     input[tagName] = meta.buildFieldOptions(metaField, fieldName) || input[tagName];
 
-    if (input.attributes) {
+    if (metaField.type == "radiobox") {
+      input.attributes = {id: fieldName + "_radioboxes"};
+    } else {
+      label.attributes = {for: fieldName};
       Utilities.apply(input.attributes, {
         id: fieldName,
         name: fieldName
@@ -48,8 +47,10 @@ meta.buildFieldOptions = function(metaField, fieldName) {
     var options = [];
 
     for (var value in metaField.options) {
+      var option;
+
       if (metaField.type == "radiobox") {
-        options.push({
+        option = {
           li: [
             {input: null, attributes: {
               type: "radio",
@@ -59,13 +60,23 @@ meta.buildFieldOptions = function(metaField, fieldName) {
             }},
             {label: metaField.options[value], attributes: {for: fieldName + "_" + value}}
           ]
-        });
+        };
+
+        if (metaField.default && metaField.default == value) {
+          option.li[0].attributes.checked = "checked";
+        }
       } else {
-        options.push({
+        option = {
           option: metaField.options[value],
           attributes: {value: value}
-        });
+        };
+
+        if (metaField.default && metaField.default == value) {
+          option.li[0].attributes.selected = "selected";
+        }
       }
+
+      options.push(option);
     }
 
     return options;

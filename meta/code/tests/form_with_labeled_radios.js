@@ -7,7 +7,8 @@ tests.push({
       options: {
         "m": "male",
         "f": "female"
-      }
+      },
+      default: "m"
     }
   }],
   expected: JSON.stringify({
@@ -20,7 +21,8 @@ tests.push({
               type: "radio",
               id: "gender_m",
               name: "gender",
-              value: "m"
+              value: "m",
+              checked: "checked"
             }},
             {label: "male", attributes: {for: "gender_m"}}
           ]},
@@ -33,7 +35,7 @@ tests.push({
             }},
             {label: "female", attributes: {for: "gender_f"}}
           ]}
-        ]},
+        ], attributes: {id: "gender_radioboxes"}},
         {button: "submit", attributes: {
           type: "submit"
         }}

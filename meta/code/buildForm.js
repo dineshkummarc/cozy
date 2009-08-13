@@ -15,21 +15,24 @@ meta.buildForm = function(metaForm) {
       input.attributes = {id: fieldName + "_radioboxes"};
     } else {
       label.attributes = {for: fieldName};
-      Utilities.apply(input.attributes, {
-        id: fieldName,
-        name: fieldName
-      });
+      input.attributes.id = fieldName;
+
+      if (metaField.type !== "button") input.attributes.name = fieldName;
     }
 
-    var options = meta.buildFieldOptions(metaField, fieldName);
-
-    if (options) {
-      input[tagName] = options;
+    if (metaField.options) {
+      input[tagName] = meta.buildFieldOptions(metaField, fieldName);
     } else {
       if (metaField.default) input.attributes.value = metaField.default;
+      if (["button", "submit"].indexOf(metaField.type) != -1) input[tagName] = label.label;
     }
 
-    formFields.push({li: [label, input]});
+    var li = [];
+
+    if (["button", "submit"].indexOf(metaField.type) == -1) li = [label];
+
+    li.push(input);
+    formFields.push({li: li});
   }
 
   formFields.push({li: [meta.fieldDefinition.submit]});
@@ -53,8 +56,10 @@ meta.getTagName = function(jsonNode) {
 
 
 meta.buildFieldOptions = function(metaField, fieldName) {
+  var options;
+
   if (metaField.options && typeof metaField.options != 'string') {
-    var options = [];
+    options = [];
 
     for (var value in metaField.options) {
       var option;
@@ -95,9 +100,9 @@ meta.buildFieldOptions = function(metaField, fieldName) {
 
       options.push(option);
     }
-
-    return options;
   }
+
+  return options;
 };
 
 

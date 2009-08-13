@@ -5,6 +5,9 @@ tests.push({
       type: "textbox",
       label: "The title",
       default: "test"
+    },
+    shoot: {
+      type: "button"
     }
   }],
   expected: JSON.stringify({
@@ -21,11 +24,8 @@ tests.push({
             value: "test"
           }}
         ]},
-        {li: [
-          {button: "submit", attributes: {
-            type: "submit"
-          }}
-        ]}
+        {li: [{button: "shoot", attributes: {type: "button", id: "shoot"}}]},
+        {li: [{button: "submit", attributes: {type: "submit"}}]}
       ]}
     ], attributes: {
       action: "",

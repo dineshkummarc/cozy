@@ -1,4 +1,11 @@
 meta.form = {
+  gender: {
+    type: "radiobox",
+    options: {
+      m: "male",
+      f: "female"
+    }
+  },
   title: {
     type: "textbox",
     label: "The title",
@@ -17,5 +24,8 @@ meta.form = {
   parola: {
     type: "password",
     label: "Parola:"
+  },
+  shoot: {
+    type: "button"
   }
 };

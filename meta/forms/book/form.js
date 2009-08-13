@@ -1,7 +1,7 @@
 meta.form = {
   title: {
     type: "textbox",
-    label: "The titlu",
+    label: "The title",
     validation: {
       rules: {
         required: true,
@@ -10,8 +10,12 @@ meta.form = {
         minlen: 5
       },
       messages: {
-        required: "The titlu is required."
+        required: "The title is required."
       }
     }
+  },
+  parola: {
+    type: "password",
+    label: "Parola:"
   }
 };

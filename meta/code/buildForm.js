@@ -29,11 +29,13 @@ meta.buildForm = function(metaForm) {
       if (metaField.default) input.attributes.value = metaField.default;
     }
 
-    formFields.push(label, input, meta.fieldDefinition.submit);
+    formFields.push({li: [label, input]});
   }
 
+  formFields.push({li: [meta.fieldDefinition.submit]});
+
   return {form: [
-    {div: formFields}
+    {ul: formFields}
   ], attributes: {
     action: "",
     method: "post"

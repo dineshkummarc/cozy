@@ -9,19 +9,23 @@ tests.push({
   }],
   expected: JSON.stringify({
     form: [
-      {div: [
-        {label: "The title", attributes: {
-          for: "title"
-        }},
-        {input: null, attributes: {
-          type: "text",
-          id: "title",
-          name: "title",
-          value: "test"
-        }},
-        {button: "submit", attributes: {
-          type: "submit"
-        }}
+      {ul: [
+        {li: [
+          {label: "The title", attributes: {
+            for: "title"
+          }},
+          {input: null, attributes: {
+            type: "text",
+            id: "title",
+            name: "title",
+            value: "test"
+          }}
+        ]},
+        {li: [
+          {button: "submit", attributes: {
+            type: "submit"
+          }}
+        ]}
       ]}
     ], attributes: {
       action: "",

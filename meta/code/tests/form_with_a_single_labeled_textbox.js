@@ -6,6 +6,10 @@ tests.push({
       label: "The title",
       default: "test"
     },
+    agreed_terms: {
+      type: "checkbox",
+      label: "Agree terms and conditions"
+    },
     shoot: {
       type: "button"
     }
@@ -22,6 +26,16 @@ tests.push({
             id: "title",
             name: "title",
             value: "test"
+          }}
+        ]},
+        {li: [
+          {input: null, attributes: {
+            type: "checkbox",
+            id: "agreed_terms",
+            name: "agreed_terms"
+          }},
+          {label: "Agree terms and conditions", attributes: {
+            for: "agreed_terms"
           }}
         ]},
         {li: [{button: "shoot", attributes: {type: "button", id: "shoot"}}]},

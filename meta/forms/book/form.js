@@ -4,7 +4,8 @@ meta.form = {
     options: {
       m: "male",
       f: "female"
-    }
+    },
+    default: "f"
   },
   title: {
     type: "textbox",
@@ -27,5 +28,9 @@ meta.form = {
   },
   shoot: {
     type: "button"
+  },
+  agreed_terms: {
+    type: "checkbox",
+    label: "Agree terms and conditions"
   }
 };

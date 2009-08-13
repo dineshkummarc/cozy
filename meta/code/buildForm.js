@@ -29,9 +29,12 @@ meta.buildForm = function(metaForm) {
 
     var li = [];
 
-    if (["button", "submit"].indexOf(metaField.type) == -1) li = [label];
+    if (["button", "submit", "checkbox"].indexOf(metaField.type) == -1) li = [label];
 
     li.push(input);
+
+    if (metaField.type == "checkbox") li.push(label);
+
     formFields.push({li: li});
   }
 
@@ -56,50 +59,44 @@ meta.getTagName = function(jsonNode) {
 
 
 meta.buildFieldOptions = function(metaField, fieldName) {
-  var options;
+  if (typeof metaField.options == 'string') return;
 
-  if (metaField.options && typeof metaField.options != 'string') {
-    options = [];
+  var options = [], option;
 
-    for (var value in metaField.options) {
-      var option;
+  for (var value in metaField.options) {
+    if (metaField.type == "radiobox") {
+      option = {li: [
+        {input: null, attributes: {
+          type: "radio",
+          id: fieldName + "_" + value,
+          name: fieldName,
+          value: value
+        }},
+        {label: metaField.options[value], attributes: {
+          for: fieldName + "_" + value
+        }}
+      ]};
 
-      if (metaField.type == "radiobox") {
-        option = {
-          li: [
-            {input: null, attributes: {
-              type: "radio",
-              id: fieldName + "_" + value,
-              name: fieldName,
-              value: value
-            }},
-            {label: metaField.options[value], attributes: {
-              for: fieldName + "_" + value
-            }}
-          ]
-        };
+      if (metaField.default && metaField.default == value) {
+        option.li[0].attributes.checked = "checked";
+      }
+    } else if (["select", "multiselect"].indexOf(metaField.type) > -1) {
+      option = {
+        option: metaField.options[value],
+        attributes: {value: value}
+      };
 
-        if (metaField.default && metaField.default == value) {
-          option.li[0].attributes.checked = "checked";
-        }
-      } else {
-        option = {
-          option: metaField.options[value],
-          attributes: {value: value}
-        };
+      if (metaField.default) {
+        var isArray = metaField.default.constructor == [].constructor;
+        var defaults = isArray ? metaField.default : [metaField.default];
 
-        if (metaField.default) {
-          var isArray = metaField.default.constructor == [].constructor;
-          var defaults = isArray ? metaField.default : [metaField.default];
-
-          if (defaults.indexOf(value) > -1) {
-            option.attributes.selected = "selected";
-          }
+        if (defaults.indexOf(value) > -1) {
+          option.attributes.selected = "selected";
         }
       }
-
-      options.push(option);
     }
+
+    options.push(option);
   }
 
   return options;
@@ -136,8 +133,7 @@ meta.fieldDefinition = {
   checkbox: {
     input: null,
     attributes: {
-      type: "checkbox",
-      checked: false
+      type: "checkbox"
     }
   },
   radiobox: {

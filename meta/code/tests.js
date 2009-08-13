@@ -1,4 +1,4 @@
-#!/usr/bin/js -w -s
+#!/usr/local/bin/js -w -s
 
 load(
   "lib/test_runner/TestRunner.js",

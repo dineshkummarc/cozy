@@ -2,6 +2,7 @@
 
 find . \
     -type f \
+    -mindepth 2\
     -name tests.sh \
     -exec {} \;
 

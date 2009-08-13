@@ -1,3 +1,3 @@
 #/bin/sh
 
-./test.sh && couchapp push
+./tests.sh && couchapp push

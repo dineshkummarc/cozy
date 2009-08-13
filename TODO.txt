@@ -1,4 +1,5 @@
-- test meta.buildForm() with radios
+*** DTT ***
+- test message
 
 hints:
 - think of how to DRYly include all the fields in POST when submitting the form

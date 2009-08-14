@@ -3,6 +3,7 @@
 development:
 - extract validation data from forms and to validate_doc_update
   and client-side JS
+- separate validation data from form?
 
 wiki:
 - add simple example

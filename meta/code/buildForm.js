@@ -59,7 +59,7 @@ meta.getTagName = function(jsonNode) {
 
 
 meta.buildFieldOptions = function(metaField, fieldName) {
-  if (typeof metaField.options == 'string') return;
+  if (typeof metaField.options == 'string') return false;
 
   var options = [], option;
 

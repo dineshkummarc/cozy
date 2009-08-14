@@ -3,7 +3,11 @@ tests.push({
   arguments: [{
     gender: {
       type: "radiobox",
-      label: "Gender",
+      label: [
+        {a: "Gender", attributes: {
+          href: "http://www.google.com"
+        }}
+      ],
       options: {
         "m": "male",
         "f": "female"
@@ -15,7 +19,11 @@ tests.push({
     form: [
       {ul: [
         {li: [
-          {label: "Gender"},
+          {label: [
+            {a: "Gender", attributes: {
+              href: "http://www.google.com"
+            }}
+          ]},
           {ul: [
             {li: [
               {input: null, attributes: {
@@ -50,5 +58,3 @@ tests.push({
     }
   })
 });
-
-

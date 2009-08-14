@@ -29,7 +29,8 @@ load(
   dir + 'get_json_element_tag_name.js',
   dir + 'form_with_a_textbox_checkbox_button.js',
   dir + 'form_with_a_multiselect_with_inline_options.js',
-  dir + 'form_with_radioboxes.js'
+  dir + 'form_with_radioboxes.js',
+  dir + 'label_with_rich_content.js'
 );
 
 

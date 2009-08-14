@@ -31,6 +31,10 @@ meta.form = {
   },
   agreed_terms: {
     type: "checkbox",
-    label: "Agree terms and conditions"
+    label: [
+      {a: "Agree terms and conditions", attributes: {
+        href: "http://www.google.md/intl/en/privacy.html"
+      }}
+    ]
   }
 };

@@ -1,22 +1,19 @@
 meta.html = [
-  {head: meta.head || "" },
+  {head: meta.head},
   {body: [
-    {h1: "Page header"},
-    {ul: [
-      {li: [{a: "home", attributes: {href: "/", class: "active"}}]},
-      {li: [{a: "faq", attributes: {href: "/faq.html"}}]},
-      {li: [{a: "projects", attributes: {href: "/projects.html"}}]},
-      {li: [{a: "contact", attributes: {href: "/contact.html"}}]}
-    ], attributes: {id: "menu"}},
-    {ul: [
+    meta.header,
+    {h2: "Page content"},
+    {ol: [
       {li: "item"},
       {li: "item"},
       {li: "item"},
       {li: "item"},
     ], attributes: {id: "leftNav"}},
-    {p: "First paragraph.", attributes: {class: "crazy idea"}},
-    {p: "Second paragraph."},
-    {br: null},
-    "some plain text"
+    {div: [
+      {p: "First paragraph.", attributes: {class: "crazy idea"}},
+      "some plain text",
+      {p: "Second paragraph."}
+    ]},
+    meta.footer
   ], attributes: {id: "homePage"}}
 ];

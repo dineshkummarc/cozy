@@ -1,8 +1,9 @@
 *** DTT ***
-development
-- test message
 
-wiki
+development:
+- how to print HTML entities? (do we need it?)
+
+wiki:
 - add simple example
 
 hints:

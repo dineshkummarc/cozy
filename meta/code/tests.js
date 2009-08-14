@@ -27,9 +27,9 @@ var dir = 'meta/code/tests/';
 
 load(
   dir + 'get_json_element_tag_name.js',
-  dir + 'form_with_a_single_labeled_textbox.js',
-  dir + 'form_with_a_single_labeled_multiselect_with_inline_options.js',
-  dir + 'form_with_labeled_radioboxes.js'
+  dir + 'form_with_a_textbox_checkbox_button.js',
+  dir + 'form_with_a_multiselect_with_inline_options.js',
+  dir + 'form_with_radioboxes.js'
 );
 
 

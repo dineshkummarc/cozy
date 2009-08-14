@@ -1,7 +1,8 @@
 *** DTT ***
 
 development:
-- how to print HTML entities? (do we need it?)
+- extract validation data from forms and to validate_doc_update
+  and client-side JS
 
 wiki:
 - add simple example
@@ -10,3 +11,4 @@ hints:
 - think of how to DRYly include all the fields in POST when submitting the form
   from the page-specific script
 - maybe define the _id definition rule in form.js?
+- how to print HTML entities? (do we need them? aren't they a security threat?)

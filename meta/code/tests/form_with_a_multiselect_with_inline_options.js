@@ -1,5 +1,5 @@
 tests.push({
-  description: "Form with a single multiselect with inline options.",
+  description: "Form with a multiselect with inline options.",
   arguments: [{
     type: {
       type: "multiselect",

@@ -1,5 +1,5 @@
 tests.push({
-  description: "Form with labeled radio-boxes.",
+  description: "Form with radioboxes.",
   arguments: [{
     gender: {
       type: "radiobox",

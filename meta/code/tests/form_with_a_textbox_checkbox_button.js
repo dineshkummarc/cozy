@@ -1,5 +1,5 @@
 tests.push({
-  description: "Form with a single labeled text-box.",
+  description: "Form with a textbox, a checkbox, and a button.",
   arguments: [{
     title: {
       type: "textbox",

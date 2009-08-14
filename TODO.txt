@@ -1,5 +1,9 @@
 *** DTT ***
+development
 - test message
+
+wiki
+- add simple example
 
 hints:
 - think of how to DRYly include all the fields in POST when submitting the form

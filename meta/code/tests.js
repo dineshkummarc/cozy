@@ -4,7 +4,8 @@ load(
   "lib/test_runner/TestRunner.js",
   "lib/json_html/JsonHtml.js",
   "vendor/json2.js",
-  "meta/code/buildForm.js"
+  "meta/code/buildForm.js",
+  "meta/code/validation.js"
 );
 
 print("Testing meta.buildForm():");
@@ -30,7 +31,8 @@ load(
   dir + 'form_with_a_textbox_checkbox_button.js',
   dir + 'form_with_a_multiselect_with_inline_options.js',
   dir + 'form_with_radioboxes.js',
-  dir + 'label_with_rich_content.js'
+  dir + 'label_with_rich_content.js',
+  dir + 'validation_data_externalization.js'
 );
 
 

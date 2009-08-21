@@ -24,12 +24,16 @@ meta.buildForm = function(metaForm) {
       input[tagName] = meta.buildFieldOptions(metaField, fieldName);
     } else {
       if (metaField.default) input.attributes.value = metaField.default;
-      if (["button", "submit"].indexOf(metaField.type) != -1) input[tagName] = label.label;
+      if (["button", "submit"].indexOf(metaField.type) != -1) {
+        input[tagName] = label.label;
+      }
     }
 
     var li = [];
 
-    if (["button", "submit", "checkbox"].indexOf(metaField.type) == -1) li = [label];
+    if (["button", "submit", "checkbox"].indexOf(metaField.type) == -1) {
+      li = [label];
+    }
 
     li.push(input);
 

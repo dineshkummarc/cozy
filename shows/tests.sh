@@ -1,6 +1,5 @@
 #!/bin/sh
 
-echo ""
 echo "Testing shows:"
 
 tester_script="`basename $0`"
@@ -10,17 +9,17 @@ js_interpeter="/usr/local/bin/js -w -s"
 return_code=0
 
 for script in $scripts; do
-  /bin/echo -n "- $script: "
-  /bin/echo -n "var showCode = " |\
-    /bin/cat - $script |\
-    /usr/bin/sed -E \
+  echo -n "- $script: "
+  echo -n "var showCode = " |\
+    cat - $script |\
+    sed -E \
       -e 's|// +\!code +(.*)$|load\("\1"\)|' \
       -e '$a\
         ;showCode();' |\
   $js_interpeter
 
   if [ $? = 0 ]; then
-    /bin/echo OK
+    echo "OK"
   else
     return_code=1
   fi

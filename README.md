@@ -2,7 +2,7 @@
 
 This framework is trying to DRY-up last drop of dupplication from the
 development process. It is uses JSON as much as possible for applicaton
-meta-data.
+meta-data and tries to use as less code as possible.
 
 **Notes**
 

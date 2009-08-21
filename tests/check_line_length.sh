@@ -8,6 +8,7 @@ find . \
   ! -path "./vendor/*" \
   ! -path "./.git/*" \
   ! -path "./tmp/*" \
+  ! -path "./_attachments/validation_data/*" \
   ! -name "*.swp" \
   -type f \
   -exec awk "length($1) > 80 {OFS=\":\"; print FILENAME, NR, length($1)}" {} \;

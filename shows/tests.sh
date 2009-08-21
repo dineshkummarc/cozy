@@ -2,28 +2,18 @@
 
 echo "Testing shows:"
 
-tester_script="`basename $0`"
-path="`dirname $0`"
-scripts="`find $path -depth 1 -type f ! -name $tester_script -name '*.js'`"
-js_interpeter="/usr/local/bin/js -w -s"
-return_code=0
+find shows \
+  -depth 1 \
+  ! -name tests.sh \
+  -name '*.js' \
+| while read file; do
+  echo -n "- $file: "
 
-for script in $scripts; do
-  echo -n "- $script: "
-  echo -n "var showCode = " |\
-    cat - $script |\
-    sed -E \
-      -e 's|// +\!code +(.*)$|load\("\1"\)|' \
-      -e '$a\
-        ;showCode();' |\
-  $js_interpeter
+  cat shows/tests/show_prefix.js $file shows/tests/show_suffix.js | \
+    sed -E -e 's|// +\!code +(.*)$|load\("\1"\)|' | \
+    /usr/local/bin/js -w -s
 
-  if [ $? = 0 ]; then
-    echo "OK"
-  else
-    return_code=1
-  fi
+  echo "OK."
 done
 
 echo ""
-return $return_code

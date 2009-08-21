@@ -1,7 +1,6 @@
 *** DTT ***
 
 development:
-- fix shows tests
 - add test/check_sh_errexit.sh
 - add test/check_js_strict_warnings.sh
 - meta/code/validation_data_export.sh define a list of forms to

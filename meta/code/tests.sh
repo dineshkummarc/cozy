@@ -22,7 +22,6 @@ fi
 if [ ! -f $destination_path ]; then
   echo -e "\n ---- FAILED!!! ----"
   return 1
-else
-  echo -e "OK\n"
-  return 0
 fi
+
+echo -e "OK.\n"

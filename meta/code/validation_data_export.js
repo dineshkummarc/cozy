@@ -1,5 +1,7 @@
 #!/usr/local/bin/js -w -s
 
+// This script is intended to be called only by validation_data_export.sh
+
 load(
   "lib/json_html/JsonHtml.js",
   "vendor/json2.js",

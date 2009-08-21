@@ -1,9 +1,11 @@
 *** DTT ***
 
 development:
-- extract validation data from forms and to validate_doc_update
-  and client-side JS
-- separate validation data from form?
+- fix shows tests
+- add test/check_sh_errexit.sh
+- add test/check_js_strict_warnings.sh
+- meta/code/validation_data_export.sh define a list of forms to
+  export validation data from (DRY validation data export)
 
 wiki:
 - add simple example

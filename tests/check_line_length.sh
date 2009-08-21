@@ -1,6 +1,8 @@
-#!/bin/sh
+#!/bin/sh -e
 
 echo "Check files for lines longer than 80:"
+
+# refactor to fail (maybe user "for" loop?)
 
 find . \
   ! -path "./vendor/*" \

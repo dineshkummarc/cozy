@@ -1,17 +1,9 @@
-#!/bin/sh
+#!/bin/sh -e
 
 find . \
-    -type f \
-    -mindepth 2\
-    -name tests.sh \
-    -exec {} \;
-
-find . \
-    -type f \
-    -name tests.js \
-    -exec {} \;
-
-find . \
-    -type f \
-    -path "./tests/*" \
-    -exec {} \;
+  \( -name "tests.js" -mindepth 2 \) \
+  -or \( -name "tests.sh" \) \
+  -or \( -path "./tests/*" -type f \) \
+| while read file; do
+  $file
+done

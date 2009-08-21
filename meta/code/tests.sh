@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/sh -e
 
 echo -n "Testing the validation data exporter: "
 
@@ -11,6 +11,13 @@ if [ -f $destination_path ]; then
 fi
 
 meta/code/validation_data_export.sh $meta_form_path $meta_form $destination_path
+
+return_code=$?
+
+if [ $return_code -ne 0 ]; then
+  echo "Exporter script failed with code $return_code"
+  return 1
+fi
 
 if [ ! -f $destination_path ]; then
   echo -e "\n ---- FAILED!!! ----"

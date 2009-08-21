@@ -2,6 +2,7 @@
 
 development:
 - fix shows tests
+- refactor tests/check_line_length.sh to fail (see check_todos.sh)
 - add test/check_sh_errexit.sh
 - add test/check_js_strict_warnings.sh
 - meta/code/validation_data_export.sh define a list of forms to

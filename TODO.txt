@@ -1,10 +1,6 @@
 *** DTT ***
 
 development:
-- optimize tests/check_todos_and_line_length.sh
--- find -exec awk with a function that calls exit if finds something
--- find -exec grep -c TODo {} +
--- combine into one find?
 - add test/check_sh_errexit.sh
 - add test/check_js_strict_warnings.sh
 - meta/code/validation_data_export.sh define a list of forms to

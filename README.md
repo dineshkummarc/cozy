@@ -45,8 +45,9 @@ The meta-form is a collection o such fields:
       ...
     }
 
-This is the most part of the logic in the application. From this
-structure a simple 92 sloc handmade script generates HTML.
+This is the most part of the logic in the application. No doubt there will
+come more, let us ee it and we will figuire out a way to encode.
+From this structure a simple 92 sloc handmade script generates HTML.
 With CouchApp jQuery plugin the form saves the data in CoudhDB.
 
 An interestng and useful thing is that the validation data is going to be used

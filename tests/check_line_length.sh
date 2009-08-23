@@ -9,7 +9,7 @@ files=`find . \
   ! -path "./_attachments/validation_data/*" \
   -type f \
   ! -name "*.swp" \
-  -exec awk "length($1) > 80 {OFS=\":\"; print FILENAME, NR, length($1)}" {} +`
+  -exec awk "length($1) > 80 {OFS=\":\"; print FILENAME, FNR, length($1)}" {} +`
 
 if [ -n "$files" ]; then
   echo -e "\n$files\n\n---- FAILED!!! ----"

@@ -36,4 +36,6 @@ load(
 );
 
 
-TestRunner.run(tests);
+var exit_code = TestRunner.run(tests);
+
+quit(exit_code);

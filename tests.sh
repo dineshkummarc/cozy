@@ -1,6 +1,6 @@
 #!/bin/sh -e
 
-echo ""
+echo -e "\nRunning tests:\n"
 
 find . \
   \( -name "tests.js" -mindepth 2 \) \
@@ -9,3 +9,5 @@ find . \
 | while read file; do
   $file
 done
+
+echo -e "All tests passed.\n"

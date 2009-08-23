@@ -1,10 +1,74 @@
-# Cozy: an application development framework on top of CouchDB and CouchApp
+# Cozy: an application development tool on top of CouchDB and CouchApp
 
-This framework is trying to DRY-up last drop of dupplication from the
-development process. It is uses JSON as much as possible for applicaton
-meta-data and tries to use as less code as possible.
+## Forms
 
-**Notes**
+In good old days everything was centered around forms: all the specs were
+centered by forms and I believe that this approach is still practical.
+
+
+## Meta-form - a complete JSON description of form
+
+"Meta" - because it is a simple and readable description.
+Here is a simple form field description:
+
+    title: {
+      type: "textbox",
+      label: "The title"
+    }
+
+Here you can add validation rulles and messages:
+
+    title: {
+      type: "textbox",
+      label: "The title",
+      validation: {
+        rules: {
+          required: true,
+          maxlen: 50, 
+          minlen: 5
+        },  
+        messages: {
+          required: "The title is required."
+        }   
+      }   
+    }
+
+The meta-form is a collection o such fields:
+
+    mata.form = {
+      title: {
+        ...
+      },
+      description: {
+        ...
+      },
+      ...
+    }
+
+This is the most part of the logic in the application. From this
+structure a simple 92 sloc handmade script generates HTML.
+With CouchApp jQuery plugin the form saves the data in CoudhDB.
+
+An interestng and useful thing is that the validation data is going to be used
+on both sides: on the client and on the server.
+
+
+## Technical details
+
+All the code is written using TDD. Tests are included:
+
+- tests.(js|sh)
+- tests/*
+
+To run tests run the tests.sh in the application root.
+
+Generally the tool is trying to capture as much as possible in JSON description
+and use as less code as possible.
+
+
+## Notes
 
 - This is a work in progress;
-- The shell scripts are Bourne Shell scripts written on FreeBSD.
+- The shell scripts are Bourne Shell scripts written on FreeBSD that
+  may need some tweaking.
+- The Javascript scripts expect /usr/local/bin/js as interpretter.

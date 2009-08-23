@@ -8,7 +8,7 @@ centered by forms and I believe that this approach is still practical.
 
 ## Meta-form - a complete JSON description of form
 
-"Meta" - because it is a simple and readable description.
+"Meta" - because it is a simple, DRY, and readable description.
 Here is a simple form field description:
 
     title: {
@@ -62,8 +62,12 @@ All the code is written using TDD. Tests are included:
 
 To run tests run the tests.sh in the application root.
 
+
+## Less code
+
 Generally the tool is trying to capture as much as possible in JSON description
-and use as less code as possible.
+and use as less code as possible. Compared to code, metadata is easier to
+test without considerable amounts of computational power.
 
 
 ## Notes

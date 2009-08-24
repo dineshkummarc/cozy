@@ -3,7 +3,7 @@ tests.push({
       " and the error message is the one specified in validation data",
   method: function(doc, validationData, incremental) {
     try {
-      valid(doc, validationData, incremental);
+      isValid(doc, validationData, incremental);
       return "No exception thrown";
     } catch(e) {
       return JSON.parse(e).message;
@@ -25,11 +25,11 @@ tests.push({
 }, {
   description: "Throws an error when a required field is empty" +
       " and the error message has the pattern: " +
-      "'fieldName: validationCode.required.message" +
+      "'fieldName: validationCode.required.defaultMessage" +
       " when no error message is given in validation data.",
   method: function(doc, validationData, incremental) {
     try {
-      valid(doc, validationData, incremental);
+      isValid(doc, validationData, incremental);
       return "No exception thrown";
     } catch(e) {
       return JSON.parse(e).message;
@@ -44,12 +44,12 @@ tests.push({
       }
     }
   }],
-  expected: "title: " + validationCode.required.message
+  expected: validationCode.required.defaultMessage
 }, {
   description: "Returns true when a required field is not empty",
   method: function(doc, validationData, incremental) {
     try {
-      valid(doc, validationData, incremental);
+      isValid(doc, validationData, incremental);
       return true;
     } catch(e) {
       return JSON.parse(e).message;
@@ -66,8 +66,8 @@ tests.push({
   }],
   expected: true
 }, {
-  description: "Returns true when a non-required field is not empty",
-  method: valid,
+  description: "Returns true when a non-required field is empty",
+  method: isValid,
   arguments: [{
     title: ""
   }, {
@@ -80,14 +80,14 @@ tests.push({
   expected: true
 }, {
   description: "When a required field is not present in the document at" +
-      " all throws an exception with the message having pattern: " +
-      " Unkown field to validate: fieldName",
+      " all throws an exception with the message " +
+      " 'Unkown field to validate'",
   method: function(doc, validationData) {
     try {
-      valid(doc, validationData);
+      isValid(doc, validationData);
       return "No exception thrown";
     } catch(e) {
-      return e;
+      return JSON.parse(e).message;
     }
   },
   arguments: [{
@@ -99,5 +99,5 @@ tests.push({
       }
     }
   }],
-  expected: "Unkown field to validate: title"
+  expected: "Unknown field to validate"
 });

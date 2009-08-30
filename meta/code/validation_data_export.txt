@@ -1,0 +1,1 @@
+meta/forms/book/form.js meta.form _attachments/validation_data/book.js

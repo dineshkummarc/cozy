@@ -2,15 +2,12 @@
 
 echo -n "Testing the validation data exporter: "
 
-meta_form_path="tmp/tests/form.js"
-meta_form="meta.form"
+source_file="tmp/tests/form.js"
+json_name="meta.form"
 destination_path="tmp/tests/form_validation_data.js"
 
-if [ -f $destination_path ]; then
-  rm $destination_path
-fi
-
-meta/code/validation_data_export.sh $meta_form_path $meta_form $destination_path
+echo "$source_file $json_name $destination_path" | \
+meta/code/validation_data_export.sh
 
 return_code=$?
 
@@ -23,5 +20,7 @@ if [ ! -f $destination_path ]; then
   echo -e "\n ---- FAILED!!! ----"
   return 1
 fi
+
+#rm -f $destination_path
 
 echo -e "OK.\n"

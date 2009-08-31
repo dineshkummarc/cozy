@@ -12,7 +12,7 @@ meta.buildForm = function(metaForm) {
     var input = Utilities.clone(meta.fieldDefinition[metaField.type]);
 
     if (typeof input == "undefined") {
-      throw "Undefined metaField.type: " + metaField.type
+      throw "Undefined metaField.type: " + metaField.type;
     }
 
     var tagName = meta.getTagName(input);

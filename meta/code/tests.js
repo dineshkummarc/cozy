@@ -34,7 +34,7 @@ load(
   dir + 'form_with_radioboxes.js',
   dir + 'label_with_rich_content.js',
   dir + 'validation_data_externalization.js',
-  dir + 'fails_if_the_field_does_not_have_a_type_property.js'
+  dir + 'buildForm_assumes_default_type_textbox.js'
 );
 
 

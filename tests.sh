@@ -5,7 +5,7 @@ echo -e "\nRunning tests:\n"
 find . \
   \( -name "tests.js" -mindepth 2 \) \
   -or \( -name "tests.sh" \) \
-  -or \( -path "./tests/*" -type f ! -name "*.swp" \) \
+  -or \( -path "./tests/*" -type f -perm +u+x ! -name "*.swp" \) \
 | while read file; do
   $file
 done

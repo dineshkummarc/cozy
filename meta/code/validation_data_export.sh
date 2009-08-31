@@ -1,7 +1,8 @@
 #!/bin/sh -e
 
+validation_data_exporter="meta/code/validation_data_export.js"
+
 while read meta_form_path meta_form destination_path; do
-  validation_data_exporter="meta/code/validation_data_export.js"
   validation_data=`sed \
       -e "s|META_FORM_PATH|$meta_form_path|; s/META_FORM/$meta_form/" \
       $validation_data_exporter \

@@ -1,8 +1,7 @@
 *** DTT ***
 
 development:
-- meta/code/validation_data_export.sh define a list of forms to
-  export validation data from (DRY validation data export)
+- develop Author page;
 - metadata tests (syntactic?);
 
 wiki:

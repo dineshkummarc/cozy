@@ -343,6 +343,8 @@ var JSON = JSON || {};
             gap = mind;
             return v;
         }
+
+        return '';
     }
 
 // If the JSON object does not yet have a stringify method, give it one.

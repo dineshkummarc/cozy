@@ -4,12 +4,18 @@ meta.buildForm = function(metaForm) {
   for (var fieldName in metaForm) {
     var metaField = metaForm[fieldName];
     var label = {label: metaField.label || fieldName}; 
-    var input = meta.fieldDefinition[metaField.type]
-    var tagName = meta.getTagName(input);
+
+    if (typeof metaField.type == "undefined") {
+      metaField.type = "textbox";
+    }
+
+    var input = Utilities.clone(meta.fieldDefinition[metaField.type]);
 
     if (typeof input == "undefined") {
-      throw "Unknown meta field type: " + metaField.type;
+      throw "Undefined metaField.type: " + metaField.type
     }
+
+    var tagName = meta.getTagName(input);
 
     if (metaField.type == "radiobox") {
       input.attributes = {id: fieldName + "_radioboxes"};

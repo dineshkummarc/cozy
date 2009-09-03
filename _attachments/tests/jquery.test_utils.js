@@ -1,4 +1,4 @@
-$.exists = function() {
+$.exist = function() {
   for (var i = 0; i < arguments.length; i++) {
     if ($(arguments[i]).length == 0) return false;
   }
@@ -17,8 +17,7 @@ $.getDoc = function(url) {
   });
 };
 
-$.scheduleTest = function(test) {
-  $(window.sandbox)
-    .attr("src", test.url)
-    .bind("load", test.code);
+$.runTest = function(test) {
+  $($.sandbox).bind("load", test.code);
+  $.sandbox.location.href = test.url;
 };

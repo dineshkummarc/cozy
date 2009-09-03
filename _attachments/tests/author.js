@@ -1,5 +1,5 @@
 $.runTest({
-  description: "Author page",
+  description: "Author page: add",
   url: "../_show/author",
   code: function() {
     var form = $("form#author", $.sandbox.document);

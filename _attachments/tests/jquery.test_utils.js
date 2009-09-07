@@ -17,7 +17,13 @@ $.getDoc = function(url) {
   });
 };
 
+$.log = function(message) {
+  $("#log").append('<p>' + message + '</p>');
+}
+
 $.runTest = function(test) {
+  $.log(test.description);
+  $.log(test.url);
   $($.sandbox).bind("load", test.code);
   $.sandbox.location.href = test.url;
 };

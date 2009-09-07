@@ -5,6 +5,6 @@ $.runTest({
     var form = $("form#author", $.sandbox.document);
     var name = $("#name:text:enabled", form);
 
-    console.log($.exist(form, name) && name.val() == "");
+    $.log($.exist(form, name) && name.val() == "");
   }
 });

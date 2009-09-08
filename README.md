@@ -1,7 +1,7 @@
 ### General ###
 
 All this is built on top of [CouchApp](http://github.com/jchris/couchapp).
-Thanks to Benoît CHESNEA.
+Thanks to Benoît CHESNEU.
 
 ### Forms ###
 

@@ -2,10 +2,7 @@
 
 Acceptance (functional) tests use QUnit, the jQuery testing framework.
 
-index.html is the test runner. Every test is a separate Javascript file
-included at the bottom of the body. See author.js for an example.
-
-A test consists of a call to the $.runTest method defined in
+A test consists of a call to the tests.add() method defined in
 jquery.test_utils.js which is given a JSON object consisting of 3 members:
 
 * description - the test description
@@ -13,11 +10,11 @@ jquery.test_utils.js which is given a JSON object consisting of 3 members:
 * code - an anonymous function containing the test logic
 
 The page having the given URL is opened in the sandbox iframe refered by
-$.sandbox.
+tests.sandbox.
 
 The test code refers to the page content verifying the presence of certain 
 elements, values, submitting forms or any other actions that would define
-acceptance criterias.
+acceptance criterias. See author.js for an example.
 
 **Note:**
 

@@ -1,9 +1,8 @@
 *** DTT ***
 
 development:
-- write integration tests for Author page (from gn);
+- write acceptance tests for Author page (from gn);
 - metadata tests (syntactic?);
-- check syntax for home-grown scripts before upload;
 
 wiki:
 - add simple example

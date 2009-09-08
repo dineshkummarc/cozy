@@ -7,7 +7,5 @@ tests.add({
     ok($.exist(form), "We have one form#author");
     ok($.exist($("#name:text:enabled", form)),
         "We have one #name:text:enabled");
-    ok($.exist($("#age:text:enabled", form)),
-        "We have one #age:text:enabled");
   }
 });

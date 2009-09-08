@@ -1,6 +1,7 @@
 ### Acceptance tests ###
 
 Acceptance (functional) tests use QUnit, the jQuery testing framework.
+They need to be ran from the browser.
 
 A test consists of a call to the tests.add() method defined in
 jquery.test_utils.js which is given a JSON object consisting of 3 members:
@@ -9,12 +10,12 @@ jquery.test_utils.js which is given a JSON object consisting of 3 members:
 * url - the page to test
 * code - an anonymous function containing the test logic
 
-The page having the given URL is opened in the sandbox iframe refered by
+The page having the given URL is opened in the sandbox iframe referred by
 tests.sandbox.
 
 The test code refers to the page content verifying the presence of certain 
-elements, values, submitting forms or any other actions that would define
-acceptance criterias. See author.js for an example.
+elements, values, submitting forms or any other actions that would verify
+acceptance criteria. See author.js for an example.
 
 **Note:**
 

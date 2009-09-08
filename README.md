@@ -1,10 +1,15 @@
-### Forms
+### General ###
+
+All this is built on top of [CouchApp](http://github.com/jchris/couchapp).
+Thanks to Benoît CHESNEA.
+
+### Forms ###
 
 In good old days everything was centered around forms: all the specs were
 centered by forms and I believe that this approach is still practical.
 
 
-### Meta-form - a complete JSON description of form
+### Meta-form - a complete JSON description of form ###
 
 "Meta" - because it is a simple, DRY, and readable description.
 Here is a simple form field description:
@@ -52,7 +57,7 @@ An interestng and useful thing is that the validation data is going to be used
 on both sides: on the client and on the server.
 
 
-### Technical details
+### Technical details ###
 
 All the code is written using TDD. Tests are included:
 
@@ -62,14 +67,18 @@ All the code is written using TDD. Tests are included:
 To test the entire source tree run the tests.sh in the application root.
 To test any module run tests.(js|sh) at any level.
 
-### Less code
+Acceptance (functional) tests use jQuery and its testing framework QUnit.
+Adding a new page to the app should start with writing an acceptance test
+that would define the page components and functionality.
+
+### Less code ###
 
 Generally the tool is trying to capture as much as possible in JSON description
 and use as less code as possible. Compared to code, metadata is easier to
 test without considerable amounts of computational power.
 
 
-### Notes
+### Notes ###
 
 - This is a work in progress;
 - The shell scripts are Bourne Shell scripts written on FreeBSD that

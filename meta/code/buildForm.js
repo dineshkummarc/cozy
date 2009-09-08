@@ -1,5 +1,8 @@
 meta.buildForm = function(metaForm) {
-  var formFields = [];
+  var fields = [];
+  var id = metaForm._entityName;
+
+  delete metaForm._entityName;
 
   for (var fieldName in metaForm) {
     var metaField = metaForm[fieldName];
@@ -45,16 +48,17 @@ meta.buildForm = function(metaForm) {
 
     if (metaField.type == "checkbox") li.push(label);
 
-    formFields.push({li: li});
+    fields.push({li: li});
   }
 
-  formFields.push({li: [meta.fieldDefinition.submit]});
+  fields.push({li: [meta.fieldDefinition.submit]});
 
   return {form: [
-    {ul: formFields}
+    {ul: fields}
   ], attributes: {
     action: "",
-    method: "post"
+    method: "post",
+    id: id
   }};
 };
 

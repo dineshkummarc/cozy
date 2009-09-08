@@ -34,7 +34,8 @@ load(
   dir + 'form_with_radioboxes.js',
   dir + 'label_with_rich_content.js',
   dir + 'validation_data_externalization.js',
-  dir + 'buildForm_assumes_default_type_textbox.js'
+  dir + 'buildForm_assumes_default_type_textbox.js',
+  dir + 'the_entityName_property_is_form_id.js'
 );
 
 

@@ -7,6 +7,8 @@ files=`find . \
   ! -path "./.git/*" \
   ! -path "./tmp/*" \
   ! -path "./_attachments/validation_data/*" \
+  ! -path "./_attachments/tests/testsuite.css" \
+  ! -path "./_attachments/tests/testrunner.js" \
   -type f \
   ! -name "*.swp" \
   -exec awk "length($1) > 80 {OFS=\":\"; print FILENAME, FNR, length($1)}" {} +`

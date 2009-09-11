@@ -3,8 +3,10 @@
 All this is built for [CouchDB](http://couchdb.org).
 Thanks to Damien KATZ ([http://damienkatz.net](http://damienkatz.net)).
 
-All this is built on top of [CouchApp](http://github.com/jchris/couchapp).
-Thanks to Benoit CHESNEAU ([http://benoitc.org](http://benoitc.org)).
+All this is built on top of [CouchApp]
+(http://github.com/jchris/couchapp).
+Thanks to Benoit CHESNEAU ([http://benoitc.org](http://benoitc.org))
+and  Chris ANDERSON ([http://jchrisa.net](http://jchrisa.net)).
 
 
 ### Forms ###

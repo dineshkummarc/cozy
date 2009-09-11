@@ -1,10 +1,10 @@
 ### General ###
 
-All this is built for [CouchDB](http://couchdb.org/).
-Thanks to Damien KATZ (http://damienkatz.net/).
+All this is built for [CouchDB](http://couchdb.org).
+Thanks to Damien KATZ ([http://damienkatz.net](http://damienkatz.net)).
 
 All this is built on top of [CouchApp](http://github.com/jchris/couchapp).
-Thanks to Benoit CHESNEAU (http://benoitc.org/).
+Thanks to Benoit CHESNEAU ([http://benoitc.org](http://benoitc.org)).
 
 
 ### Forms ###

@@ -1,7 +1,11 @@
 ### General ###
 
+All this is built for [CouchDB](http://couchdb.org/).
+Thanks to Damien KATZ (http://damienkatz.net/).
+
 All this is built on top of [CouchApp](http://github.com/jchris/couchapp).
-Thanks to Benoît CHESNEU.
+Thanks to Benoit CHESNEAU (http://benoitc.org/).
+
 
 ### Forms ###
 
@@ -59,7 +63,7 @@ on both sides: on the client and on the server.
 
 ### Technical details ###
 
-All the code is written using TDD. Tests are included:
+(almost) All the code is written using TDD. Tests are included:
 
 - tests.(js|sh)
 - tests/*
@@ -71,11 +75,13 @@ Acceptance (functional) tests use jQuery and its testing framework QUnit.
 Adding a new page to the app should start with writing an acceptance test
 that would define the page components and functionality.
 
+
 ### Less code ###
 
 Generally the tool is trying to capture as much as possible in JSON description
 and use as less code as possible. Compared to code, metadata is easier to
 test without considerable amounts of computational power.
+
 
 ### Code structure ###
 
@@ -87,9 +93,10 @@ Most of the CouchApp initial app structure is left untouched. Besides that:
   useful Javascript functions that I use myself;
 - "./vendor/" - added the JSON2 Javascript library;
 
+
 ### Notes ###
 
 - this is a work in progress, good ideas are welcome;
-- the shell scripts are Bourne Shell scripts written on FreeBSD that
-  may need some tweaking.
-- the Javascript scripts expect /usr/local/bin/js as interpretter.
+- shell scripts are Bourne Shell scripts written on FreeBSD that
+  may need some tweaking before they will run on other *NIX-es;
+- Javascript scripts expect /usr/local/bin/js as interpretter.

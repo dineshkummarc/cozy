@@ -4,7 +4,7 @@ load("_attachments/js/validation.js");
 load("lib/test_runner/TestRunner.js");
 load("vendor/json2.js");
 
-print("Testing valide() function:");
+print("Testing isValid() function:");
 
 /*
  * Add a test object to the tests array.
@@ -28,7 +28,7 @@ var tests = [];
 var dir = '_attachments/js/tests/';
 
 load(
-  dir + 'validation.js',
+  dir + 'validation_general.js',
   dir + 'validation_required.js'
 );
 

@@ -1,7 +1,3 @@
-meta.applyDefaultValidation = function(field) {
-};
-
-
 meta.getValidationData = function(metaForm) {
     var validation_data = {};
 

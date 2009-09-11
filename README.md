@@ -77,10 +77,19 @@ Generally the tool is trying to capture as much as possible in JSON description
 and use as less code as possible. Compared to code, metadata is easier to
 test without considerable amounts of computational power.
 
+### Code structure ###
+
+Most of the CouchApp initial app structure is left untouched. Besides that:
+
+- "./meta/" - I keep most of the application logic;
+- "./lib/" - added a couple of good things in the "lib" like JsonHtml parser,
+  a test runner for the server-side Javascript code, and a tiny library of
+  useful Javascript functions that I use myself;
+- "./vendor/" - added the JSON2 Javascript library;
 
 ### Notes ###
 
-- This is a work in progress;
-- The shell scripts are Bourne Shell scripts written on FreeBSD that
+- this is a work in progress, good ideas are welcome;
+- the shell scripts are Bourne Shell scripts written on FreeBSD that
   may need some tweaking.
-- The Javascript scripts expect /usr/local/bin/js as interpretter.
+- the Javascript scripts expect /usr/local/bin/js as interpretter.

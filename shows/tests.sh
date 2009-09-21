@@ -2,10 +2,10 @@
 
 echo "Testing shows:"
 
-find shows \
-  -depth 1 \
-  ! -name tests.sh \
-  -name '*.js' \
+find ./shows \
+  -maxdepth 1 \
+  ! -path "./shows/tests.sh" \
+  -name "*.js" \
 | while read file; do
   echo -n "- $file: "
 

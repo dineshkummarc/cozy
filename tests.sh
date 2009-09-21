@@ -3,9 +3,12 @@
 echo -e "\nRunning tests:\n"
 
 find . \
-  \( -name "tests.js" -mindepth 2 \) \
-  -or \( -name "tests.sh" \) \
-  -or \( -path "./tests/*" -type f ! -name "*.swp" \) \
+  -mindepth 2 \
+  -type f \
+  -name "*.swp" \
+  -or -name "tests.sh" \
+  -or -name "tests.js" \
+  -or -path "./tests/*" \
 | while read file; do
   $file
 done

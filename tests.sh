@@ -5,7 +5,7 @@ echo -e "\nRunning tests:\n"
 find . \
   -mindepth 2 \
   -type f \
-  -name "*.swp" \
+  ! -name "*.swp" \
   -or -name "tests.sh" \
   -or -name "tests.js" \
   -or -path "./tests/*" \

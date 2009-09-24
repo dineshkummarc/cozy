@@ -101,4 +101,6 @@ Most of the CouchApp initial app structure is left untouched. Besides that:
 - this is a work in progress, good ideas are welcome;
 - shell scripts are Bourne Shell scripts written on FreeBSD that
   may need some tweaking before they will run on other *NIX-es;
-- Javascript scripts expect /usr/local/bin/js as interpretter.
+  Update: also tweaked for Centos 5.3 and Fedora 11;
+- Javascript scripts expect /usr/local/bin/js as interpretter, so
+  on Linux just say: # ln -s /usr/bin/js /usr/local/bin/js.

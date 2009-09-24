@@ -6,9 +6,11 @@ find . \
   -mindepth 2 \
   -type f \
   ! -name "*.swp" \
-  -or -name "tests.sh" \
-  -or -name "tests.js" \
-  -or -path "./tests/*" \
+  -and \( \
+    -name "tests.sh" \
+    -or -name "tests.js" \
+    -or -path "./tests/*" \
+  \) \
 | while read file; do
   $file
 done

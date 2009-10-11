@@ -81,6 +81,7 @@ var JHF = {
       };
 
       if (metaData.disabled) attributes.disabled = "disabled";
+      if (metaData.default) attributes.checked = "checked";
 
       return [
         {input: null, attributes: attributes},
@@ -104,6 +105,21 @@ var JHF = {
 
         if (disabled) attributes.disabled = "disabled";
 
+        if (metaData.default) {
+          if (metaData.multiple) {
+            if (Utilities.getType(metaData.default) == "array") {
+              if (metaData.default.indexOf(option) > -1)
+                attributes.selected = "selected";
+            } else {
+              if (metaData.default == option)
+                attributes.selected = "selected";
+            }
+          } else {
+            if (metaData.default == option)
+              attributes.selected = "selected";
+          }
+        }
+
         select.push({
           option: optionLabel,
           attributes: attributes
@@ -118,6 +134,18 @@ var JHF = {
       return [
         {label: metaData.label || id, attributes: {for: id}},
         {select: select, attributes: attributes}
+      ];
+    },
+
+    textareaField: function(id, metaData) {
+      var defaultValue = metaData.default || "";
+      var attributes = {id: id};
+
+      if (metaData.disabled) attributes.disabled = "disabled";
+
+      return [
+        {label: metaData.label || id, attributes: {for: id}},
+        {textarea: defaultValue, attributes: attributes}
       ];
     }
   }

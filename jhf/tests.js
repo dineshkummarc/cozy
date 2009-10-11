@@ -233,6 +233,21 @@ var tests = [{
     {label: "Accept usage terms", attributes: {for: "accept"}}
   ]})
 }, {
+  description: "JHF.buildField: checkbox checked by default",
+  arguments: ["accept", {
+    label: "Accept usage terms",
+    type: "checkbox",
+    default: "checked"
+  }],
+  expected: JSON.stringify({li: [
+    {input: null, attributes: {
+      id: "accept",
+      type: "checkbox",
+      checked: "checked"
+    }},
+    {label: "Accept usage terms", attributes: {for: "accept"}}
+  ]})
+}, {
   description: "JHF.buildField: select",
   arguments: ["level", {
     label: "Level:",
@@ -292,6 +307,26 @@ var tests = [{
     ], attributes: {id: "level", disabled: "disabled"}}
   ]})
 }, {
+  description: "JHF.buildField: select with a default value",
+  arguments: ["level", {
+    label: "Level:",
+    type: "select",
+    options: {
+      "1": "low",
+      "2": "middle",
+      "3": "high"
+    },
+    default: 3
+  }],
+  expected: JSON.stringify({li: [
+    {label: "Level:", attributes: {for: "level"}},
+    {select: [
+      {option: "low", attributes: {value: "1"}},
+      {option: "middle", attributes: {value: "2"}},
+      {option: "high", attributes: {value: "3", selected: "selected"}}
+    ], attributes: {id: "level"}}
+  ]})
+}, {
   description: "JHF.buildField: select multiple",
   arguments: ["levels", {
     label: "Levels:",
@@ -310,6 +345,82 @@ var tests = [{
       {option: "middle", attributes: {value: "2"}},
       {option: "high", attributes: {value: "3"}}
     ], attributes: {id: "levels", multiple: "multiple"}}
+  ]})
+}, {
+  description: "JHF.buildField: select multiple with multiple options" +
+      " selected by default",
+  arguments: ["levels", {
+    label: "Levels:",
+    type: "select",
+    options: {
+      "1": "low",
+      "2": "middle",
+      "3": "high"
+    },
+    multiple: true,
+    default: ["1", "3"]
+  }],
+  expected: JSON.stringify({li: [
+    {label: "Levels:", attributes: {for: "levels"}},
+    {select: [
+      {option: "low", attributes: {value: "1", selected: "selected"}},
+      {option: "middle", attributes: {value: "2"}},
+      {option: "high", attributes: {value: "3", selected: "selected"}}
+    ], attributes: {id: "levels", multiple: "multiple"}}
+  ]})
+}, {
+  description: "JHF.buildField: select multiple with an option selected by" +
+      " default",
+  arguments: ["levels", {
+    label: "Levels:",
+    type: "select",
+    options: {
+      "1": "low",
+      "2": "middle",
+      "3": "high"
+    },
+    multiple: true,
+    default: "1"
+  }],
+  expected: JSON.stringify({li: [
+    {label: "Levels:", attributes: {for: "levels"}},
+    {select: [
+      {option: "low", attributes: {value: "1", selected: "selected"}},
+      {option: "middle", attributes: {value: "2"}},
+      {option: "high", attributes: {value: "3"}}
+    ], attributes: {id: "levels", multiple: "multiple"}}
+  ]})
+}, {
+  description: "JHF.buildField: textarea",
+  arguments: ["description", {
+    label: "Description:",
+    type: "textarea"
+  }],
+  expected: JSON.stringify({li: [
+    {label: "Description:", attributes: {for: "description"}},
+    {textarea: "", attributes: {id: "description"}}
+  ]})
+}, {
+  description: "JHF.buildField: disabled textarea",
+  arguments: ["description", {
+    label: "Description:",
+    type: "textarea",
+    disabled: true
+  }],
+  expected: JSON.stringify({li: [
+    {label: "Description:", attributes: {for: "description"}},
+    {textarea: "", attributes: {id: "description", disabled: "disabled"}}
+  ]})
+}, {
+  description: "JHF.buildField: textarea with default value",
+  arguments: ["description", {
+    label: "Description:",
+    type: "textarea",
+    default: "short text"
+  }],
+  expected: JSON.stringify({li: [
+    {label: "Description:", attributes: {for: "description"}},
+    {textarea: "short text", attributes: {id: "description"}}
   ]})
 }];
 

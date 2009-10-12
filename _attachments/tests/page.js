@@ -9,6 +9,6 @@ tests.add({
 
     ok($.exist(body), "We have the <body>");
     ok($.exist($("h1:contains('This is a new page')", body)),
-        "We have the <h1>");
+        "We have the right <h1>");
   }
 });

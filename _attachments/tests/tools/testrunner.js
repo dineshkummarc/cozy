@@ -459,6 +459,7 @@ function test(name, callback) {
 		if(bad) {
 			$("#filter-pass").attr("disabled", null);
 			$("#filter-missing").attr("disabled", null);
+      $("#banner").addClass("fail");
 		}
 	});
 }

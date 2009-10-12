@@ -1,4 +1,4 @@
-meta.includeScript = function(name) {
+Meta.includeScript = function(name) {
   return {
     script: "", attributes: {
       type: "text/javascript",

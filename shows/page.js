@@ -1,11 +1,11 @@
 function(doc, req) {
-  // !code lib/json_html/JsonHtml.js
-  // !code meta/forms/default/head.js
-  // !code meta/forms/default/header.js
-  // !code meta/forms/default/footer.js
-  // !code meta/forms/default/page.js
+  // !code lib/jh/JH.js
+  // !code lib/utilities/Utilities.js
+  // !code _attachments/pages/default/head.js
+  // !code _attachments/pages/default/body.js
+  // !code _attachments/pages/default/page.js
 
   return {
-    body: JsonHtml.toXMLString(meta.html)
+    body: JH.toHtml5(page)
   }
 };

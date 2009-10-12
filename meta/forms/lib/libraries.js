@@ -1,4 +1,4 @@
-meta.libraries = [{
+Meta.libraries = [{
     script: "", attributes: {
     type: "text/javascript",
     src: "/_utils/script/json2.js"

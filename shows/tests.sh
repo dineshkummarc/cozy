@@ -11,7 +11,7 @@ find ./shows \
 
   cat shows/tests/show_prefix.js $file shows/tests/show_suffix.js | \
     sed -E -e 's|// +\!code +(.*)$|load\("\1"\)|' | \
-    /usr/local/bin/js -w -s -f vendor/couchapp/path.js
+    /usr/local/bin/js -w -s
 
   echo "OK."
 done

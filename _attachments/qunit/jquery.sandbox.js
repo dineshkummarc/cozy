@@ -1,26 +1,28 @@
-// hack for script validation
-var $ = $ || new Function;
-var asyncTest = asyncTest || new Function;
+// hack for compilation with SpiderMonkey
+var $ = $ || {};
+var QUnit = QUnit || {asyncTest:function(){},start:function(){}};
 
-$.test = function(description, url, testCode) {
-  asyncTest(description, function() {
-    var httpStatus = checkHttpStatus();
-
-    if (httpStatus != 200) {
-      start();
+$.test = function(description, url, tests) {
+  QUnit.asyncTest(description, function() {
+    if (Cozy.cantLoad(url)) {
+      QUnit.start();
       return;
     }
 
-    createSandbox().onload = function() {
-      testCode();
-      deleteSandbox();
-      start();
+    var sandbox = Cozy.createSandbox();
+
+    sandbox.onload = function() {
+      Cozy.run(tests, sandbox.document);
+      Cozy.delete(sandbox);
+      QUnit.start();
     };
 
-    $.sandbox.location.href = url;
+    sandbox.location.href = url;
   });
+};
 
-  function checkHttpStatus() {
+var Cozy = {
+  cantLoad: function(url) {
     var request = $.ajax({
       type: "HEAD",
       url: url,
@@ -28,24 +30,31 @@ $.test = function(description, url, testCode) {
       cache: false
     });
 
-    equals(request.status, 200, "Check HTTP status code");
-    equals(request.statusText, "OK", "Check HTTP status text");
+    var urlLoaded = request.status == 200;
+    var message = "Can load the page";
+    
+    if (!urlLoaded)
+      message = "Can't load the page: " + request.statusText;
 
-    return request.status;
-  }
+    ok(urlLoaded, message);
 
-  function createSandbox() {
-    $("body").append("<iframe id='sandbox' src='about:blank'></iframe>");
-    return $.sandbox = frames[0];
-  }
+    return !urlLoaded;
+  },
 
-  function deleteSandbox() {
-    $.sandbox.location.href = "about:blank";
-    $("iframe#sandbox").remove();
-    $.sandbox = null;
-    delete $.sandbox;
+  createSandbox: function() {
+    $("body").append("<iframe></iframe>");
+    return frames[0];
+  },
+
+  delete: function(sandbox) {
+    sandbox.location.href = "about:blank";
+    $("iframe").remove();
+  },
+
+  run: function(code, context) {
+    code(context);
   }
-};
+}
 
 $.exist = function(selector, context) {
   return $(selector, context).length > 0;

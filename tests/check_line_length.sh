@@ -1,6 +1,6 @@
 #!/bin/sh -e
 
-echo -n "Check files lines longer than 80: "
+echo -n "Check files for lines longer than 80: "
 
 files=`find . \
   ! -path "./vendor/*" \

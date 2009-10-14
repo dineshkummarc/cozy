@@ -1,2 +1,2 @@
-page.title = {title: "Add page"};
+page.title = {title: "Add book"};
 

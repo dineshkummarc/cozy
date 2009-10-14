@@ -1,4 +1,4 @@
-$.test("New page", "../_show/page", function() {
-  equals($("head title", $.sandbox.document).text(), "New page",
+$.test("Default page", "../_show/page", function(sandbox) {
+  equals($("head title", sandbox).text(), "New page",
       "HTML title");
 });

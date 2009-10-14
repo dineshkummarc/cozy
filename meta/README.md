@@ -1,3 +1,12 @@
+### Deprecated
+
+This direcotry is deprecated. It will prebably be deleted in the future.
+
+- "forms" will move to _attachments/pages
+- "code" will move to lib/meta
+- "security" - didn't decide yet
+
+
 ### Application data ###
 
 - "./code/" - the code used with the app meta-data;

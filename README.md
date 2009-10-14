@@ -1,12 +1,10 @@
 ### General ###
 
-All this is built for [CouchDB](http://couchdb.org).
-Thanks to Damien KATZ ([http://damienkatz.net](http://damienkatz.net)).
-
-All this is built on top of [CouchApp]
-(http://github.com/jchris/couchapp).
-Thanks to Benoit CHESNEAU ([http://benoitc.org](http://benoitc.org))
-and  Chris ANDERSON ([http://jchrisa.net](http://jchrisa.net)).
+- All this is built for [CouchDB](http://couchdb.org).
+  Thanks to Damien KATZ ([http://damienkatz.net](http://damienkatz.net)).
+- All this is built on top of [CouchApp] (http://github.com/jchris/couchapp).
+  Thanks to Benoit CHESNEAU ([http://benoitc.org](http://benoitc.org))
+  and  Chris ANDERSON ([http://jchrisa.net](http://jchrisa.net)).
 
 
 ### Forms ###
@@ -55,12 +53,11 @@ The meta-form is a collection o such fields:
     }
 
 This is the most part of the logic in the application. No doubt there will
-come more, let us ee it and we will figuire out a way to encode.
-From this structure a simple 92 sloc handmade script generates HTML.
+come more, let us see it and we will figuire out a way to encode.
+From this structure a homegrown script generates HTML.
 With CouchApp jQuery plugin the form saves the data in CoudhDB.
 
-An interestng and useful thing is that the validation data is going to be used
-on both sides: on the client and on the server.
+The validation data is going to be used on both the client and the server.
 
 
 ### Technical details ###
@@ -73,16 +70,18 @@ on both sides: on the client and on the server.
 To test the entire source tree run the tests.sh in the application root.
 To test any module run tests.(js|sh) at any level.
 
-Acceptance (functional) tests use jQuery and its testing framework QUnit.
+Acceptance tests use jQuery and its testing framework QUnit.
 Adding a new page to the app should start with writing an acceptance test
 that would define the page components and functionality.
+
+To upload (couchapp push) it to CouchDB run upload.sh in the application root.
 
 
 ### Less code ###
 
 Generally the tool is trying to capture as much as possible in JSON description
-and use as less code as possible. Compared to code, metadata is easier to
-test without considerable amounts of computational power.
+and use as less code as possible. Why? Compared to code, metadata is easier and
+less expensive to test.
 
 
 ### Code structure ###
@@ -90,17 +89,14 @@ test without considerable amounts of computational power.
 Most of the CouchApp initial app structure is left untouched. Besides that:
 
 - "./meta/" - I keep most of the application logic;
-- "./lib/" - added a couple of good things in the "lib" like JsonHtml parser,
-  a test runner for the server-side Javascript code, and a tiny library of
-  useful Javascript functions that I use myself;
+- "./lib/" - added a couple of libs: jh, meta, test_runner (a test runner for
+  the server-side Javascript code), and a tiny library of
+  useful Javascript functions;
 - "./vendor/" - added the JSON2 Javascript library;
 
 
 ### Notes ###
 
 - this is a work in progress, good ideas are welcome;
-- shell scripts are Bourne Shell scripts written on FreeBSD that
-  may need some tweaking before they will run on other *NIX-es;
-  Update: also tweaked for Centos 5.3 and Fedora 11;
 - Javascript scripts expect /usr/local/bin/js as interpretter, so
   on Linux just say: # ln -s /usr/bin/js /usr/local/bin/js.

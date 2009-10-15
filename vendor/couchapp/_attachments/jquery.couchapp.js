@@ -79,9 +79,22 @@
           // formToDeepJSON acts on localFormDoc by reference
           formToDeepJSON(this, opts.fields, localFormDoc);
           if (opts.beforeSave) opts.beforeSave(localFormDoc);
+          var async = $(formSelector).data("async");
+          async = (async === undefined ? true : async);
           db.saveDoc(localFormDoc, {
+            async: async,
             success : function(resp) {
               if (opts.success) opts.success(resp, localFormDoc);
+              $(formSelector).removeData("error");
+              $(formSelector).data("success", JSON.stringify(resp));
+            },
+            error: function(xhr, textStatus, errorThrown) {
+              $(formSelector).removeData("success");
+              $(formSelector).data("error", JSON.stringify({
+                xhr: xhr,
+                textStatus: textStatus,
+                errorThrown: errorThrown
+              }));
             }
           })
           

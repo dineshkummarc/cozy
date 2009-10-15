@@ -2,26 +2,26 @@
 var $ = $ || {};
 var QUnit = QUnit || {asyncTest:function(){},start:function(){}};
 
-$.test = function(description, url, tests) {
-  QUnit.asyncTest(description, function() {
-    if (Cozy.cantLoad(url)) {
-      QUnit.start();
-      return;
-    }
-
-    var sandbox = Cozy.createSandbox();
-
-    sandbox.onload = function() {
-      Cozy.run(tests, sandbox.document);
-      Cozy.delete(sandbox);
-      QUnit.start();
-    };
-
-    sandbox.location.href = url;
-  });
-};
-
 var Cozy = {
+  test: function(description, url, tests) {
+    QUnit.asyncTest(description, function() {
+      if (Cozy.cantLoad(url)) {
+        QUnit.start();
+        return;
+      }
+
+      var sandbox = Cozy.createSandbox();
+
+      sandbox.onload = function() {
+        Cozy.run(tests).on(sandbox.document);
+        Cozy.delete(sandbox);
+        QUnit.start();
+      };
+
+      sandbox.location.href = url;
+    });
+  },
+
   cantLoad: function(url) {
     var request = $.ajax({
       type: "HEAD",
@@ -51,8 +51,12 @@ var Cozy = {
     $("iframe").remove();
   },
 
-  run: function(code, context) {
-    code(context);
+  run: function(code) {
+    return {
+      on: function(context) {
+        code(context);
+      }
+    };
   }
 }
 

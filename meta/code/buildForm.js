@@ -8,15 +8,12 @@ meta.buildForm = function(metaForm) {
     var metaField = metaForm[fieldName];
     var label = {label: metaField.label || fieldName}; 
 
-    if (typeof metaField.type == "undefined") {
-      metaField.type = "textbox";
-    }
+    if (metaField.type === undefined) metaField.type = "textbox";
 
     var input = Utilities.clone(meta.fieldDefinition[metaField.type]);
 
-    if (typeof input == "undefined") {
+    if (input === undefined)
       throw "Undefined metaField.type: " + metaField.type;
-    }
 
     var tagName = meta.getTagName(input);
 

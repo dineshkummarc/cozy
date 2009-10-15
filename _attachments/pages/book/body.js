@@ -27,5 +27,9 @@ page.body = {body: [
   {script: "", attributes: {
     type: "text/javascript",
     src: assetPath() + "/vendor/couchapp/jquery.couchapp.js"
+  }},
+  {script: "", attributes: {
+    type: "text/javascript",
+    src: assetPath() + "/pages/book/js/book.form.js"
   }}
 ]};

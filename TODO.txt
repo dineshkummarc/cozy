@@ -1,7 +1,7 @@
 *** DTT ***
 
 development:
-- write acceptance tests for Author page (from gn);
+- compilation test for pages/*/js/*
 - metadata tests (syntactic?);
 
 wiki:

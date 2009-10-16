@@ -7,7 +7,7 @@ logfile="/tmp/acceptance_test_compilation.log"
 find ./_attachments/tests/ \
   ! -name "*.swp" \
   -name "*.js" \
-  -exec js -s -f _attachments/qunit/jquery.sandbox.js -f {} + > $logfile 2>&1
+  -exec js -s -f _attachments/qunit/cozy.js -f {} + > $logfile 2>&1
 
 if [ -s "$logfile" ]; then
   echo ""

@@ -5,8 +5,6 @@ $.CouchApp(function(app) {
       doc._id = app.slugifyString(doc.author + "-" + doc.title);
     },
     success: function(resp) {
-      console.log(resp);
-      window.resp = resp;
     }
   });
 });

@@ -13,7 +13,7 @@ var Cozy = {
       var sandbox = Cozy.createSandbox();
 
       sandbox.onload = function() {
-        Cozy.run(tests).on(sandbox.document);
+        Cozy.run(tests).into(sandbox);
         Cozy.delete(sandbox);
         QUnit.start();
       };
@@ -53,10 +53,40 @@ var Cozy = {
 
   run: function(code) {
     return {
-      on: function(context) {
+      into: function(context) {
         code(context);
       }
     };
+  },
+
+  checkSubmit: function(form) {
+    return {
+      into: function(sandbox) {
+        var response = {};
+
+        sandbox.$.ajaxSetup({
+          async: false,
+          success: function(data, textStatus) {
+            response = {status:200};
+          },
+          error: function(xhr, textStatus, errorThrown) {
+            response = xhr;
+          }
+        });
+
+        $("button[type='submit']", form).trigger("click");
+
+        sandbox.$.ajaxSetup({async: true});
+
+        var saved = response.status == 200;
+        var message = "The document was saved";
+
+        if (!saved)
+          message = "Can't save: " + response.statusText;
+
+        ok(saved, message);
+      }
+    }
   }
 }
 

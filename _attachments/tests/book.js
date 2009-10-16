@@ -1,12 +1,12 @@
 Cozy.test("Add book form", "../_show/book", function(sandbox) {
-  var context = sandbox.document;
+  var sandboxDoc = sandbox.document;
 
-  equals($("head title", context).text(), "Add book", "HTML title");
-  equals($("h1:first", context).text(), "Add book", "h1 title");
+  equals($("head title", sandboxDoc).text(), "Add book", "HTML title");
+  equals($("h1:first", sandboxDoc).text(), "Add book", "h1 title");
 
-  var form = $("form#book", context);
+  var form = $("form#book", sandboxDoc);
 
-  ok($.exist(form, context), "The form is here");
+  ok($.exist(form, sandboxDoc), "The form is here");
   ok($.exist("input:text#title", form), "The title field is here");
   ok($.exist("input:text#author", form), "The author field is here");
   ok($.exist("textarea#description", form), "The author field is here");
@@ -16,5 +16,5 @@ Cozy.test("Add book form", "../_show/book", function(sandbox) {
   $("input#author", form).val("Kent Beck");
   $("textarea#description", form).val("A short description");
 
-  Cozy.checkSubmit(form).into(sandbox);
+  Cozy.checkSubmit(form).inside(sandbox);
 });

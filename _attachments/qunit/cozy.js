@@ -67,7 +67,12 @@ var Cozy = {
         var testSettings = {
           async: false,
           success: function(data, textStatus) {
-            response = {status:200};
+            var url = this.url + "?rev=" + data.rev;
+
+            response = {
+              status: 201,
+              url: url
+            };
           },
           error: function(xhr, textStatus, errorThrown) {
             response = xhr;
@@ -78,10 +83,19 @@ var Cozy = {
         $("button[type='submit']", form).trigger("click");
         sandbox.$.ajaxSetup(prevSettings);
 
-        var saved = response.status == 200;
+        var saved = response.status == 201;
         var message = "The document was saved";
 
-        if (!saved) message = "Can't save: " + response.statusText;
+        if (saved) {
+          $.ajax({
+            type: "DELETE",
+            async: false,
+            url: response.url
+          });
+          message += " (and deleted after that)"
+        } else {
+          message = "Can't save: " + response.statusText;
+        }
 
         ok(saved, message);
       }
